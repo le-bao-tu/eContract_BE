@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Core\PDFToImage\**" />
+    <EmbeddedResource Remove="Core\PDFToImage\**" />
+    <None Remove="Core\PDFToImage\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CoreHtmlToImage" Version="1.0.6" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="5.0.1" />
+    <PackageReference Include="MimeMapping" Version="1.0.1.37" />
+    <PackageReference Include="Minio" Version="3.1.13" />
+    <PackageReference Include="Otp.NET" Version="1.2.2" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+    <PackageReference Include="System.DirectoryServices" Version="5.0.0" />
+    <PackageReference Include="System.DirectoryServices.AccountManagement" Version="5.0.0" />
+    <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
+    <PackageReference Include="System.Text.Encoding" Version="4.3.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="5.0.0" />
+    <PackageReference Include="Cronos" Version="0.7.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NetCore.DataLog\NetCore.DataLog.csproj" />
+    <ProjectReference Include="..\NetCore.Data\NetCore.Data.csproj" />
+    <ProjectReference Include="..\NetCore.Shared\NetCore.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Business\Email\" />
+    <Folder Include="Business\Catalog\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ADSS-Client-API">
+      <HintPath>lib\ADSS-Client-API.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

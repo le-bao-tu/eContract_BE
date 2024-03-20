@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20210618032126_1806.cs" />
+    <Compile Remove="Migrations\20210618032126_1806.Designer.cs" />
+    <Compile Remove="Migrations\20210906021916_add-wf-state.cs" />
+    <Compile Remove="Migrations\20210906021916_add-wf-state.Designer.cs" />
+    <Compile Remove="Migrations\20210923074624_add_meta_data.cs" />
+    <Compile Remove="Migrations\20210923074624_add_meta_data.Designer.cs" />
+    <Compile Remove="Migrations\20211006184253_sign_request_history.cs" />
+    <Compile Remove="Migrations\20211006184253_sign_request_history.Designer.cs" />
+    <Compile Remove="Migrations\20211006184802_sign_request_history.cs" />
+    <Compile Remove="Migrations\20211006184802_sign_request_history.Designer.cs" />
+    <Compile Remove="Migrations\20211010205931_add-device-firebase-toen.cs" />
+    <Compile Remove="Migrations\20211010205931_add-device-firebase-toen.Designer.cs" />
+    <Compile Remove="Migrations\20211105083743_add-table-document_notify_schedule.cs" />
+    <Compile Remove="Migrations\20211105083743_add-table-document_notify_schedule.Designer.cs" />
+    <Compile Remove="Migrations\20211124015454_add-from-date-to-date-template-1.cs" />
+    <Compile Remove="Migrations\20211124015454_add-from-date-to-date-template-1.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="4.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.11" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.11" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.4" />
+    <PackageReference Include="System.Text.Encoding" Version="4.3.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="5.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NetCore.Shared\NetCore.Shared.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Systems\Context\Email\" />
+    <Folder Include="Systems\Context\Catalog\" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,59 @@
+image: docker:20.10.7
+
+variables: 
+  docker_image: docker.io/savisdockerhub/econtract.api:dev
+
+stages:
+  - build
+
+before_script:
+  - echo "--------------Econtract API CI CD-----------------"
+  - docker info
+
+build:
+  stage: build
+  tags: 
+    - build
+  before_script:
+    - docker login docker.io -u $DOCKER_REGISTRY_USER -p $DOCKER_REGISTRY_PASS
+  script:
+    - docker pull $docker_image || true
+    - docker build --tag $docker_image . -f API-eContract-from-base.Dockerfile
+    # - docker build --cache-from savisdockerhub/econtract.api:dev -t savisdockerhub/econtract.api:dev . -f API-eContract.Dockerfile
+    # - docker build -t savisdockerhub/econtract.api:dev . -f API-eContract-from-base.Dockerfile
+    # - docker build -t savisdockerhub/econtract.api:dev . -f Dockerfile
+    # - docker build -t savisdockerhub/base-econtract . -f eContract-base.Dockerfile
+    - docker push $docker_image
+    # - docker push savisdockerhub/econtract.api:dev
+    - docker rmi -f $(docker images -f "dangling=true" -q) || true
+  only:
+    - testing
+
+    # - docker build -t savisdockerhub/econtract.api:dev . -f API-eContract-from-base.Dockerfile
+    # - docker push savisdockerhub/econtract.api:dev
+
+    # - docker build -t savisdockerhub/econtract.send-remind-console:dev . -f Worker-eContract-from-base.Dockerfile
+    # - docker push savisdockerhub/econtract.send-remind-console:dev
+
+    # - docker build -t savisdockerhub/econtract.send-remind-internal-user-console:dev . -f Send-remind-internal-user-from-base.Dockerfile
+    # - docker push savisdockerhub/econtract.send-remind-internal-user-console:dev
+
+    # docker pull savisdockerhub/econtract.api:dev
+    # docker run -d --restart unless-stopped --name econtract.worker -p 80:30200 savisdockerhub/econtract.api:dev
+    # docker run -d --restart unless-stopped --name econtract.worker savisdockerhub/econtract.send-remind-console:dev
+    # docker run -d --restart unless-stopped --name econtract.worker savisdockerhub/econtract.send-remind-internal-user-console:dev
+    
+    # docker start savisdockerhub/econtract.worker:dev
+
+
+##### VC
+
+    # - docker build -t savisdockerhub/econtract.api:vcprod . -f API-eContract-from-base.Dockerfile
+    # - docker push savisdockerhub/econtract.api:vcprod
+
+    # - docker build -t savisdockerhub/econtract.send-remind-console:vcprod . -f Worker-eContract-from-base.Dockerfile
+    # - docker push savisdockerhub/econtract.send-remind-console:vcprod
+
+    # - docker build -t savisdockerhub/econtract.send-remind-internal-user-console:vcprod . -f Send-remind-internal-user-from-base.Dockerfile
+    # - docker push savisdockerhub/econtract.send-remind-internal-user-console:vcprod
+
